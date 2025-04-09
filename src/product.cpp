@@ -86,7 +86,7 @@ double Product::sell_price()
 
     // Calculate selling price
     sell_price = base_price_ * (1 + sum_mult);
-    sell_price_ = std::floor(sell_price);
+    sell_price_ = floor(sell_price);
 
     return sell_price_;
 }
