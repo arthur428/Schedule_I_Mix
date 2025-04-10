@@ -3,18 +3,6 @@
 // sources
 // https://www.ign.com/wikis/schedule-1/Schedule_1_Mixing_Guide
 // https://hardcoregamer.com/schedule-1-every-ingredient-effects/
-// Product mix(const Product & product, const Mixer & mixer)
-// {
-//     Product result;
-//     std::vector<Effect> effects = product.effects();
-//     std::vector<Mixer> mixers = product.mixers();
-
-//     // Mix logic
-//     std::string mixer_name = mixer.effect.name;
-//     if (G_MAP_MIXERS.at(static_cast<int>(mixer_enum_t::cuke)).name == mixer_name)
-
-// }
-
 // Replace effect in effects vector with another effect based on the mixer used
 void replace_effect(std::vector<Effect> & effects, const mixer_enum_t & mixer_enum, const Effect & affected_effect)
 {
@@ -32,18 +20,11 @@ void replace_effect(std::vector<Effect> & effects, const mixer_enum_t & mixer_en
         else if (eff_name == "slippery") { find_replace_effect(effects, eff_name, "munchies");}
         else if (eff_name == "sneaky") { find_replace_effect(effects, eff_name, "paranoia"); }
         else if (eff_name == "toxic") {find_replace_effect(effects, eff_name, "euphoric");}
-        //else if (eff_name == "slippery") {
-        //    if (std::find(effects.begin(), effects.end(), G_MAP_EFFECTS.at("munchies")) != effects.end()) {
-        //        // Replace Slippery with Athletic only if Munchies is also present
-        //        find_replace_effect(effects, eff_name, "athletic");
-        //    }
-        //}
         break;
     
     case (mixer_enum_t::banana):    
         if (eff_name == "calming") { find_replace_effect(effects, eff_name, "sneaky"); }
         else if (eff_name == "cyclopean") { find_replace_effect(effects, eff_name, "energizing"); }
-        //else if (eff_name == "cyclopean") { find_replace_effect(effects, eff_name, "thoughtprovoking"); }
         else if (eff_name == "disorienting") { find_replace_effect(effects, eff_name, "focused"); }
         else if (eff_name == "energizing") { find_replace_effect(effects, eff_name, "thoughtprovoking"); }
         else if (eff_name == "focused") { find_replace_effect(effects, eff_name, "seizureinducing"); }
@@ -51,12 +32,6 @@ void replace_effect(std::vector<Effect> & effects, const mixer_enum_t & mixer_en
         else if (eff_name == "paranoia") { find_replace_effect(effects, eff_name, "jennerising"); }
         else if (eff_name == "smelly") {find_replace_effect(effects, eff_name, "antigravity");}
         else if (eff_name == "toxic") {find_replace_effect(effects, eff_name, "smelly");}
-        //else if (eff_name == "energizing") {
-        //    if (std::find(effects.begin(), effects.end(), G_MAP_EFFECTS.at("cyclopean")) == effects.end()) {
-        //        // Replace Energizing with Thought-Provoking only if Cyclopean is NOT present
-        //        find_replace_effect(effects, eff_name, "thoughtprovoking");
-        //    }
-        //}
         break;
 
     case (mixer_enum_t::paracetamol):
@@ -70,15 +45,6 @@ void replace_effect(std::vector<Effect> & effects, const mixer_enum_t & mixer_en
         else if (eff_name == "glowing") {find_replace_effect(effects, eff_name, "toxic");}
         else if (eff_name == "toxic") {find_replace_effect(effects, eff_name, "tropicthunder");}
         else if (eff_name == "energizing") { find_replace_effect(effects, eff_name, "paranoia"); }
-        //else if (eff_name == "energizing") {
-        //    if (std::find(effects.begin(), effects.end(), G_MAP_EFFECTS.at("paranoia")) == effects.end()) {
-        //        // Replace Energizing with Balding only if Paranoia is NOT present
-        //        find_replace_effect(effects, eff_name, "balding");
-        //    } else if (std::find(effects.begin(), effects.end(), G_MAP_EFFECTS.at("munchies")) == effects.end()) {
-        //        // Replace Energizing with Paranoia only if Munchies is NOT present
-        //        find_replace_effect(effects, eff_name, "paranoia");
-        //    }
-        //}
         break;
 
     case (mixer_enum_t::donut):
@@ -89,12 +55,6 @@ void replace_effect(std::vector<Effect> & effects, const mixer_enum_t & mixer_en
         else if (eff_name == "jennerising") { find_replace_effect(effects, eff_name, "gingeritis"); }
         else if (eff_name == "munchies") { find_replace_effect(effects, eff_name, "calming"); }
         else if (eff_name == "shrinking") {find_replace_effect(effects, eff_name, "energizing");}
-        //else if (eff_name == "caloriedense") {
-        //    if (std::find(effects.begin(), effects.end(), G_MAP_EFFECTS.at("explosive")) == effects.end()) {
-        //        // Replace Calorie-Dense with Explosive only if Explosive is NOT present
-        //        find_replace_effect(effects, eff_name, "explosive");
-        //    }
-        //}
         break;
 
     case (mixer_enum_t::viagra):
@@ -137,13 +97,6 @@ void replace_effect(std::vector<Effect> & effects, const mixer_enum_t & mixer_en
         else if (eff_name == "paranoia") {find_replace_effect(effects, eff_name, "calming");}
         else if (eff_name == "shrinking") {find_replace_effect(effects, eff_name, "focused");}
         else if (eff_name == "sneaky") { find_replace_effect(effects, eff_name, "tropicthunder"); }
-        //else if (eff_name == "energizing") {find_replace_effect(effects, eff_name, "spicy");}
-        //else if (eff_name == "euphoric") {
-        //    if (std::find(effects.begin(), effects.end(), G_MAP_EFFECTS.at("energizing")) == effects.end()) {
-        //        // Replace Euphoric with Spicy only if Energizing is NOT present
-        //        find_replace_effect(effects, eff_name, "spicy");
-        //    }
-        //}
         break;
 
     case (mixer_enum_t::energydrink):
@@ -164,13 +117,6 @@ void replace_effect(std::vector<Effect> & effects, const mixer_enum_t & mixer_en
         else if (eff_name == "foggy") { find_replace_effect(effects, eff_name, "toxic"); }
         else if (eff_name == "munchies") { find_replace_effect(effects, eff_name, "schizophrenia"); }
         else if (eff_name == "paranoia") {find_replace_effect(effects, eff_name, "antigravity");}
-        // else if (eff_name == "energizing") {find_replace_effect(effects, eff_name, "schizophrenia");}  // IGN error?
-        //else if (eff_name == "munchies") {
-        //    if (std::find(effects.begin(), effects.end(), G_MAP_EFFECTS.at("energizing")) == effects.end()) {
-        //        // Replace Munchies with Schizophrenia only if Energizing is NOT present
-        //        find_replace_effect(effects, eff_name, "schizophrenia");
-        //    }
-        //}
         break;
     
     case (mixer_enum_t::megabean):
@@ -184,14 +130,6 @@ void replace_effect(std::vector<Effect> & effects, const mixer_enum_t & mixer_en
         else if (eff_name == "slippery") { find_replace_effect(effects, eff_name, "toxic"); }
         else if (eff_name == "sneaky") { find_replace_effect(effects, eff_name, "calming"); }
         else if (eff_name == "thoughtprovoking") { find_replace_effect(effects, eff_name, "energizing"); }
-        // else if (eff_name == "thoughtprovoking") {find_replace_effect(effects, eff_name, "cyclopean");}  // IGN Error?
-        //else if (eff_name == "sneaky") {find_replace_effect(effects, eff_name, "glowing");}
-        //else if (eff_name == "energizing") {
-        //    if (std::find(effects.begin(), effects.end(), G_MAP_EFFECTS.at("thoughtprovoking")) == effects.end()) {
-        //        // Replace Energizing with Cyclopean only if Thought-Provoking is NOT present
-        //        find_replace_effect(effects, eff_name, "cyclopean");
-        //    }
-        //}
         break;
 
     case (mixer_enum_t::chili):
@@ -211,18 +149,6 @@ void replace_effect(std::vector<Effect> & effects, const mixer_enum_t & mixer_en
         else if (eff_name == "laxative") {find_replace_effect(effects, eff_name, "caloriedense");}
         else if (eff_name == "munchies") { find_replace_effect(effects, eff_name, "tropicthunder"); }
         else if (eff_name == "shrinking") {find_replace_effect(effects, eff_name, "munchies");}
-        //else if (eff_name == "electrifying") {
-        //    if (std::find(effects.begin(), effects.end(), G_MAP_EFFECTS.at("zombifying")) == effects.end()) {
-        //        // Replace Electrifying with Euphoric only if Zombifying is NOT present
-        //        find_replace_effect(effects, eff_name, "euphoric");
-        //    }
-        //}
-        //else if (eff_name == "euphoric") {
-        //    if (std::find(effects.begin(), effects.end(), G_MAP_EFFECTS.at("electrifying")) == effects.end()) {
-        //        // Replace Euphoric with Zombifying only if Electrifying is NOT present
-        //        find_replace_effect(effects, eff_name, "zombifying");
-        //    }
-        //}
         break;
     
     case (mixer_enum_t::iodine):
@@ -255,16 +181,21 @@ void replace_effect(std::vector<Effect> & effects, const mixer_enum_t & mixer_en
     }
 }
 
-void find_replace_effect(std::vector<Effect> & vec, std::string mixer_eff, std::string mixer_replace)
+std::vector<Effect>::iterator find_replace_effect(std::vector<Effect> & vec, std::string mixer_eff, std::string mixer_replace)
 {
     //std::cout << "[FIND_REPLACE_EFFECT]" << '\n';
     auto it = std::find(vec.begin(), vec.end(), G_MAP_EFFECTS.at(mixer_eff));
-    auto it_duplicate = std::find(vec.begin(), vec.end(), G_MAP_EFFECTS.at(mixer_replace));
-    if ((it != vec.end()) && (it_duplicate == vec.end())) {
-        // Do the replacement if effect to replace is present AND
-        // the replacement effect does not exist
+    if (it != vec.end()) {
+        // Do the replacement if effect to replace is present
         *it = G_MAP_EFFECTS.at(mixer_replace);
     }
+
+    // TODO: Make mixer affected effects into a map of string string
+    // where the first string is the affected effect
+    // and the second string is the replacement effect
+    it = std::find(it + 1, vec.end(), G_MAP_EFFECTS.at(mixer_replace));
+
+    return it;
 }
 
 Product mix(const Product &product, const mixer_enum_t &mixer_enum)
@@ -294,10 +225,78 @@ Product mix(const Product &product, const mixer_enum_t &mixer_enum)
         }
     }
 
-    // Add the mixer's effect if there is still space
-    if (effects.size() < MAX_NUM_EFFECTS) {
+    // Add the mixer's effect if there is still space and if non-existent
+    if ((effects.size() < MAX_NUM_EFFECTS) && 
+        (std::find(effects.begin(), effects.end(), G_MAP_MIXERS.at(static_cast<int>(mixer_enum)).effect) == effects.end())) {
         effects.push_back(G_MAP_MIXERS.at(static_cast<int>(mixer_enum)).effect);
     }
 
     return Product(product.base(), effects, mixers);
+}
+
+// Simulate mix until n_mixes and find the most profitable mix.
+Product find_most_profitable_mix(const Product::base_product_t& base, int n_mixers, mixer_enum_t last_unlocked_mixer)
+{
+    auto product = Product(base);
+    auto most_profitable_product = Product(base);
+    auto old = Product(base);
+    double profit_batch = 0;
+    auto mixer_selection = std::vector<uint8_t>(static_cast<int>(0, n_mixers));
+
+    auto it_lsb = mixer_selection.begin();
+    bool increment_digit = false;
+    uint64_t ctr = 0;
+    uint64_t ctr_limit = static_cast<uint64_t>(pow((static_cast<double>(last_unlocked_mixer) + 1.0), static_cast<double>(n_mixers)));
+    std::cout << "ctr_limit: " << ctr_limit << '\n';
+
+    while (true) {
+        product = Product(base);
+
+        // Mix each item
+        for (auto mixer = mixer_selection.begin(); mixer != mixer_selection.end(); mixer++) {
+            old = product;
+            Product temp = mix(product, static_cast<mixer_enum_t>(*mixer));
+            // std::cout << "Mixed with mixer: " << static_cast<int>(*mixer) << '\n';
+            if (temp.effects() == old.effects()) { break; }
+            else { product = temp; };
+        }
+
+        // Update most profitable record
+        if (product.profit_batch() > profit_batch) {
+            profit_batch = product.profit_batch();
+            most_profitable_product = product;
+        }
+
+        // Debug Log
+        std::ostringstream text;
+        for (auto it = mixer_selection.begin(); it != mixer_selection.end(); it++)
+        {
+            text << std::to_string(*it);
+            if (it != (mixer_selection.end() - 1)) {
+                text << ", ";
+            }
+        }
+        std::cout << text.str() << '\n';
+
+        ctr++;
+        if (ctr >= ctr_limit) {
+            break;
+        }
+
+        // Update selection logic
+        (*it_lsb)++;
+        if (*it_lsb > static_cast<int>(last_unlocked_mixer)) {
+            increment_digit = true;
+            while (increment_digit) {
+                *it_lsb = 0;
+                it_lsb++;
+                (*it_lsb)++;
+                if (*it_lsb > static_cast<int>(last_unlocked_mixer)) { continue; }
+                else { increment_digit = false; }
+            }
+            it_lsb = mixer_selection.begin();
+        }
+    }
+
+    return most_profitable_product;
 }

@@ -30,19 +30,20 @@ public:
     };
 
     // Base product constructor
-    Product();
     Product(const base_product_t & base);
     Product(const base_product_t & base, const std::vector<Effect> & effects, const std::vector<Mixer> & mixers);
-    double cost();
-    double sell_price();
-    double profit() const;
+    double cost_batch();
+    double sell_price_unit();
+    double sell_price_batch();
+    double profit_batch();
     base_product_t base() const;
-    std::vector<Effect> effects() const;
-    std::vector<Mixer> mixers() const;
+    std::vector<Effect> Product::effects(bool b_print_effects = false) const;
+    std::vector<Mixer> Product::mixers(bool b_print_mixers = false) const;
 
 private:
-    double sell_price_;
-    double cost_;
+    double sell_price_unit_;
+    double sell_price_batch_;
+    double cost_batch_;
     base_product_t base_;
     std::vector<Effect> effects_;
     double cost_seed_;
