@@ -75,33 +75,33 @@ int main()
     // cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
     // cout << "Batch Profit: " << result.profit_batch() << '\n';
 
-    Product result = mix(og_kush, mixer_enum_t::paracetamol);
-    result.effects(true);
-    result.mixers(true);
-    cout << "-----" << '\n';
+    //Product result = mix(og_kush, mixer_enum_t::paracetamol);
+    //result.effects(true);
+    //result.mixers(true);
+    //cout << "-----" << '\n';
 
-    result = mix(result, mixer_enum_t::cuke);
-    result.effects(true);
-    result.mixers(true);
-    cout << "-----" << '\n';
+    //result = mix(result, mixer_enum_t::cuke);
+    //result.effects(true);
+    //result.mixers(true);
+    //cout << "-----" << '\n';
 
-    result = mix(result, mixer_enum_t::paracetamol);
-    result.effects(true);
-    result.mixers(true);
-    cout << "-----" << '\n';
+    //result = mix(result, mixer_enum_t::paracetamol);
+    //result.effects(true);
+    //result.mixers(true);
+    //cout << "-----" << '\n';
 
-    cout << "Batch Cost: " << result.cost_batch() << '\n';
-    cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
-    cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
-    cout << "Batch Profit: " << result.profit_batch() << '\n';
+    //cout << "Batch Cost: " << result.cost_batch() << '\n';
+    //cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
+    //cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
+    //cout << "Batch Profit: " << result.profit_batch() << '\n';
 
-    // Product result = find_most_profitable_mix(Product::base_product_t::G_PURPLE, 3, mixer_enum_t::addy);
-    // cout << "Batch Cost: " << result.cost_batch() << '\n';
-    // cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
-    // cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
-    // cout << "Batch Profit: " << result.profit_batch() << '\n';
-    // result.effects(true);
-    // result.mixers(true);
+     Product result = find_most_profitable_mix(Product::base_product_t::GREEN_CRACK, 1, mixer_enum_t::horsesemen);
+     cout << "Batch Cost: " << result.cost_batch() << '\n';
+     cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
+     cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
+     cout << "Batch Profit: " << result.profit_batch() << '\n';
+     result.effects(true);
+     result.mixers(true);
 
     return 0;
 }

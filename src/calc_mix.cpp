@@ -47,7 +47,7 @@ Product mix(const Product &product, const mixer_enum_t &mixer_enum)
 }
 
 // Simulate mix until n_mixes and find the most profitable mix.
-Product find_most_profitable_mix(const Product::base_product_t& base, int n_mixers, mixer_enum_t last_unlocked_mixer)
+Product find_most_profitable_mix(const Product::base_product_t& base, const int &n_mixers, const mixer_enum_t &last_unlocked_mixer)
 {
     auto product = Product(base);
     auto most_profitable_product = Product(base);
