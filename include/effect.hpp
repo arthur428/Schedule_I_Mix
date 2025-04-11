@@ -49,7 +49,7 @@ const std::map<std::string, Effect> G_MAP_EFFECTS
     {"lethal", Effect{"lethal", 0.0}},
     {"paranoia", Effect{"paranoia", 0.0}},
     {"schizophrenia", Effect{"schizophrenia", 0.0}},
-    {"seizureinducing", Effect{"seizureinducing-Inducing", 0.0}},
+    {"seizureinducing", Effect{"seizureinducing", 0.0}},
     {"smelly", Effect{"smelly", 0.0}},
     {"toxic", Effect{"toxic", 0.0}}
 };

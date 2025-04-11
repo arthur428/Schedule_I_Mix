@@ -7,7 +7,7 @@ int main()
 {
     using std::cout;
 
-    auto og_kush = Product(Product::base_product_t::G_PURPLE);
+    auto og_kush = Product(Product::base_product_t::OG_KUSH);
     
     //cout << "1--------------------" << '\n';
     //Product result = mix(og_kush, mixer_enum_t::paracetamol);
@@ -48,10 +48,34 @@ int main()
     // cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
     // cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
     // cout << "Batch Profit: " << result.profit_batch() << '\n';
-    //result.effects();
-    //result.mixers();
+    // result.effects(true);
+    // result.mixers(true);
+    // cout << "Batch Cost: " << result.cost_batch() << '\n';
+    // cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
+    // cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
+    // cout << "Batch Profit: " << result.profit_batch() << '\n';
 
-    Product result = mix(og_kush, mixer_enum_t::banana);
+    // Product result = mix(og_kush, mixer_enum_t::banana);
+    // result.effects(true);
+    // result.mixers(true);
+    // cout << "-----" << '\n';
+
+    // result = mix(result, mixer_enum_t::cuke);
+    // result.effects(true);
+    // result.mixers(true);
+    // cout << "-----" << '\n';
+
+    // result = mix(result, mixer_enum_t::megabean);
+    // result.effects(true);
+    // result.mixers(true);
+    // cout << "-----" << '\n';
+
+    // cout << "Batch Cost: " << result.cost_batch() << '\n';
+    // cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
+    // cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
+    // cout << "Batch Profit: " << result.profit_batch() << '\n';
+
+    Product result = mix(og_kush, mixer_enum_t::paracetamol);
     result.effects(true);
     result.mixers(true);
     cout << "-----" << '\n';
@@ -61,7 +85,7 @@ int main()
     result.mixers(true);
     cout << "-----" << '\n';
 
-    result = mix(result, mixer_enum_t::megabean);
+    result = mix(result, mixer_enum_t::paracetamol);
     result.effects(true);
     result.mixers(true);
     cout << "-----" << '\n';
@@ -70,7 +94,6 @@ int main()
     cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
     cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
     cout << "Batch Profit: " << result.profit_batch() << '\n';
-    
 
     // Product result = find_most_profitable_mix(Product::base_product_t::G_PURPLE, 3, mixer_enum_t::addy);
     // cout << "Batch Cost: " << result.cost_batch() << '\n';

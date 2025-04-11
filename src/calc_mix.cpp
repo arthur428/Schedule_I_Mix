@@ -1,203 +1,6 @@
 #include "calc_mix.hpp"
 
-// sources
-// https://www.ign.com/wikis/schedule-1/Schedule_1_Mixing_Guide
-// https://hardcoregamer.com/schedule-1-every-ingredient-effects/
 // Replace effect in effects vector with another effect based on the mixer used
-void replace_effect(std::vector<Effect> & effects, const mixer_enum_t & mixer_enum, const Effect & affected_effect)
-{
-    //std::cout << "[REPLACE_EFFECT]" << '\n';
-    std::string eff_name = affected_effect.name;
-    eff_name[0] = tolower(eff_name[0]);
-
-    switch(mixer_enum)
-    {
-    case (mixer_enum_t::cuke):
-        if (eff_name == "euphoric") { find_replace_effect(effects, eff_name, "laxative"); }
-        else if (eff_name == "foggy") { find_replace_effect(effects, eff_name, "cyclopean"); }
-        else if (eff_name == "gingeritis") { find_replace_effect(effects, eff_name, "thoughtprovoking"); }
-        else if (eff_name == "munchies") { find_replace_effect(effects, eff_name, "athletic"); }
-        else if (eff_name == "slippery") { find_replace_effect(effects, eff_name, "munchies");}
-        else if (eff_name == "sneaky") { find_replace_effect(effects, eff_name, "paranoia"); }
-        else if (eff_name == "toxic") {find_replace_effect(effects, eff_name, "euphoric");}
-        break;
-    
-    case (mixer_enum_t::banana):    
-        if (eff_name == "calming") { find_replace_effect(effects, eff_name, "sneaky"); }
-        else if (eff_name == "cyclopean") { find_replace_effect(effects, eff_name, "energizing"); }
-        else if (eff_name == "disorienting") { find_replace_effect(effects, eff_name, "focused"); }
-        else if (eff_name == "energizing") { find_replace_effect(effects, eff_name, "thoughtprovoking"); }
-        else if (eff_name == "focused") { find_replace_effect(effects, eff_name, "seizureinducing"); }
-        else if (eff_name == "longfaced") { find_replace_effect(effects, eff_name, "refreshing"); }
-        else if (eff_name == "paranoia") { find_replace_effect(effects, eff_name, "jennerising"); }
-        else if (eff_name == "smelly") {find_replace_effect(effects, eff_name, "antigravity");}
-        else if (eff_name == "toxic") {find_replace_effect(effects, eff_name, "smelly");}
-        break;
-
-    case (mixer_enum_t::paracetamol):
-        if (eff_name == "munchies") {find_replace_effect(effects, eff_name, "antigravity");}
-        else if (eff_name == "electrifying") {find_replace_effect(effects, eff_name, "athletic");}
-        else if (eff_name == "paranoia") {find_replace_effect(effects, eff_name, "balding");}
-        else if (eff_name == "spicy") {find_replace_effect(effects, eff_name, "brighteyed");}
-        else if (eff_name == "foggy") {find_replace_effect(effects, eff_name, "calming");}
-        else if (eff_name == "focused") {find_replace_effect(effects, eff_name, "gingeritis");}
-        else if (eff_name == "calming") {find_replace_effect(effects, eff_name, "slippery");}
-        else if (eff_name == "glowing") {find_replace_effect(effects, eff_name, "toxic");}
-        else if (eff_name == "toxic") {find_replace_effect(effects, eff_name, "tropicthunder");}
-        else if (eff_name == "energizing") { find_replace_effect(effects, eff_name, "paranoia"); }
-        break;
-
-    case (mixer_enum_t::donut):
-        if (eff_name == "antigravity") { find_replace_effect(effects, eff_name, "slippery"); }
-        else if (eff_name == "balding") { find_replace_effect(effects, eff_name, "sneaky"); }
-        else if (eff_name == "caloriedense") { find_replace_effect(effects, eff_name, "explosive"); }
-        else if (eff_name == "focused") { find_replace_effect(effects, eff_name, "euphoric"); }
-        else if (eff_name == "jennerising") { find_replace_effect(effects, eff_name, "gingeritis"); }
-        else if (eff_name == "munchies") { find_replace_effect(effects, eff_name, "calming"); }
-        else if (eff_name == "shrinking") {find_replace_effect(effects, eff_name, "energizing");}
-        break;
-
-    case (mixer_enum_t::viagra):
-        if (eff_name == "athletic") { find_replace_effect(effects, eff_name, "sneaky"); }
-        else if (eff_name == "disorienting") { find_replace_effect(effects, eff_name, "toxic"); }
-        else if (eff_name == "euphoric") {find_replace_effect(effects, eff_name, "brighteyed");}
-        else if (eff_name == "laxative") {find_replace_effect(effects, eff_name, "calming");}
-        else if (eff_name == "shrinking") { find_replace_effect(effects, eff_name, "gingeritis"); }
-        break;
-
-    case (mixer_enum_t::mouthwash):
-        if (eff_name == "calming") {find_replace_effect(effects, eff_name, "antigravity");}
-        else if (eff_name == "caloriedense") { find_replace_effect(effects, eff_name, "sneaky"); }
-        else if (eff_name == "explosive") { find_replace_effect(effects, eff_name, "sedating"); }
-        else if (eff_name == "focused") {find_replace_effect(effects, eff_name, "jennerising");}
-        break;
-
-    case (mixer_enum_t::flumedicine):
-        if (eff_name == "athletic") { find_replace_effect(effects, eff_name, "munchies"); }
-        else if (eff_name == "calming") {find_replace_effect(effects, eff_name, "brighteyed");}
-        else if (eff_name == "cyclopean") { find_replace_effect(effects, eff_name, "foggy"); }
-        else if (eff_name == "electrifying") { find_replace_effect(effects, eff_name, "refreshing"); }
-        else if (eff_name == "euphoric") { find_replace_effect(effects, eff_name, "toxic"); }
-        else if (eff_name == "focused") {find_replace_effect(effects, eff_name, "calming");}
-        else if (eff_name == "laxative") {find_replace_effect(effects, eff_name, "euphoric");}
-        else if (eff_name == "munchies") { find_replace_effect(effects, eff_name, "slippery"); }
-        else if (eff_name == "shrinking") { find_replace_effect(effects, eff_name, "paranoia"); }
-        else if (eff_name == "thoughtprovoking") {find_replace_effect(effects, eff_name, "gingeritis");}
-        break;
-
-    case (mixer_enum_t::gasoline):
-        if (eff_name == "disorienting") { find_replace_effect(effects, eff_name, "glowing"); }
-        else if (eff_name == "electrifying") { find_replace_effect(effects, eff_name, "disorienting"); }
-        else if (eff_name == "energizing") { find_replace_effect(effects, eff_name, "euphoric"); }
-        else if (eff_name == "euphoric") { find_replace_effect(effects, eff_name, "spicy"); }
-        else if (eff_name == "gingeritis") { find_replace_effect(effects, eff_name, "smelly"); }
-        else if (eff_name == "jennerising") { find_replace_effect(effects, eff_name, "sneaky"); }
-        else if (eff_name == "laxative") { find_replace_effect(effects, eff_name, "foggy"); }
-        else if (eff_name == "munchies") { find_replace_effect(effects, eff_name, "sedating"); }
-        else if (eff_name == "paranoia") {find_replace_effect(effects, eff_name, "calming");}
-        else if (eff_name == "shrinking") {find_replace_effect(effects, eff_name, "focused");}
-        else if (eff_name == "sneaky") { find_replace_effect(effects, eff_name, "tropicthunder"); }
-        break;
-
-    case (mixer_enum_t::energydrink):
-        if (eff_name == "disorienting") { find_replace_effect(effects, eff_name, "electrifying"); }
-        else if (eff_name == "euphoric") { find_replace_effect(effects, eff_name, "energizing"); }
-        else if (eff_name == "focused") { find_replace_effect(effects, eff_name, "shrinking"); }
-        else if (eff_name == "foggy") { find_replace_effect(effects, eff_name, "laxative"); }
-        else if (eff_name == "glowing") { find_replace_effect(effects, eff_name, "disorienting"); }
-        else if (eff_name == "schizophrenia") {find_replace_effect(effects, eff_name, "balding");}
-        else if (eff_name == "sedating") { find_replace_effect(effects, eff_name, "munchies"); }
-        else if (eff_name == "spicy") {find_replace_effect(effects, eff_name, "euphoric");}
-        else if (eff_name == "tropicthunder") {find_replace_effect(effects, eff_name, "sneaky");}
-        break;
-
-    case (mixer_enum_t::motoroil):
-        if (eff_name == "energizing") { find_replace_effect(effects, eff_name, "munchies"); }
-        else if (eff_name == "euphoric") { find_replace_effect(effects, eff_name, "sedating"); }
-        else if (eff_name == "foggy") { find_replace_effect(effects, eff_name, "toxic"); }
-        else if (eff_name == "munchies") { find_replace_effect(effects, eff_name, "schizophrenia"); }
-        else if (eff_name == "paranoia") {find_replace_effect(effects, eff_name, "antigravity");}
-        break;
-    
-    case (mixer_enum_t::megabean):
-        if (eff_name == "athletic") { find_replace_effect(effects, eff_name, "laxative"); }
-        else if (eff_name == "calming") { find_replace_effect(effects, eff_name, "glowing"); }
-        else if (eff_name == "energizing") { find_replace_effect(effects, eff_name, "cyclopean"); }
-        else if (eff_name == "focused") { find_replace_effect(effects, eff_name, "disorienting"); }
-        else if (eff_name == "jennerising") { find_replace_effect(effects, eff_name, "paranoia"); }
-        else if (eff_name == "seizureinducing") { find_replace_effect(effects, eff_name, "focused"); }
-        else if (eff_name == "shrinking") { find_replace_effect(effects, eff_name, "electrifying"); }
-        else if (eff_name == "slippery") { find_replace_effect(effects, eff_name, "toxic"); }
-        else if (eff_name == "sneaky") { find_replace_effect(effects, eff_name, "calming"); }
-        else if (eff_name == "thoughtprovoking") { find_replace_effect(effects, eff_name, "energizing"); }
-        break;
-
-    case (mixer_enum_t::chili):
-        if (eff_name == "antigravity") { find_replace_effect(effects, eff_name, "tropicthunder"); }
-        else if (eff_name == "athletic") { find_replace_effect(effects, eff_name, "euphoric"); }
-        else if (eff_name == "laxative") { find_replace_effect(effects, eff_name, "longfaced"); }
-        else if (eff_name == "munchies") { find_replace_effect(effects, eff_name, "toxic"); }
-        else if (eff_name == "shrinking") { find_replace_effect(effects, eff_name, "refreshing"); }
-        else if (eff_name == "sneaky") {find_replace_effect(effects, eff_name, "brighteyed");}
-        else if (eff_name == "thoughtprovoking") { find_replace_effect(effects, eff_name, "focused"); }
-        break;
-
-    case (mixer_enum_t::battery):
-        if (eff_name == "cyclopean") { find_replace_effect(effects, eff_name, "glowing"); }
-        else if (eff_name == "electrifying") { find_replace_effect(effects, eff_name, "euphoric"); }
-        else if (eff_name == "euphoric") { find_replace_effect(effects, eff_name, "zombifying"); }
-        else if (eff_name == "laxative") {find_replace_effect(effects, eff_name, "caloriedense");}
-        else if (eff_name == "munchies") { find_replace_effect(effects, eff_name, "tropicthunder"); }
-        else if (eff_name == "shrinking") {find_replace_effect(effects, eff_name, "munchies");}
-        break;
-    
-    case (mixer_enum_t::iodine):
-        /*if (eff_name == "calming") { find_replace_effect(effects, eff_name, "sedating"); }*/
-        if (eff_name == "calming") { find_replace_effect(effects, eff_name, "balding"); }
-        else if (eff_name == "caloriedense") {find_replace_effect(effects, eff_name, "gingeritis");}
-        else if (eff_name == "euphoric") { find_replace_effect(effects, eff_name, "seizureinducing"); }
-        else if (eff_name == "foggy") {find_replace_effect(effects, eff_name, "paranoia");}
-        else if (eff_name == "refreshing") { find_replace_effect(effects, eff_name, "thoughtprovoking"); }
-        else if (eff_name == "toxic") {find_replace_effect(effects, eff_name, "sneaky");}
-        break;
-
-    case (mixer_enum_t::addy):
-        if (eff_name == "explosive") { find_replace_effect(effects, eff_name, "euphoric"); }
-        else if (eff_name == "foggy") { find_replace_effect(effects, eff_name, "energizing"); }
-        else if (eff_name == "glowing") { find_replace_effect(effects, eff_name, "refreshing"); }
-        else if (eff_name == "longfaced") {find_replace_effect(effects, eff_name, "electrifying");}
-        else if (eff_name == "sedating") {find_replace_effect(effects, eff_name, "gingeritis");}
-        break;
-
-    case (mixer_enum_t::horsesemen):
-        if (eff_name == "antigravity") {find_replace_effect(effects, eff_name, "calming");}
-        else if (eff_name == "gingeritis") { find_replace_effect(effects, eff_name, "refreshing"); }
-        else if (eff_name == "seizureinducing") { find_replace_effect(effects, eff_name, "energizing"); }
-        else if (eff_name == "thoughtprovoking") {find_replace_effect(effects, eff_name, "electrifying");}
-        break;
-    
-    default:
-        throw;
-    }
-}
-
-std::vector<Effect>::iterator find_replace_effect(std::vector<Effect> & vec, std::string mixer_eff, std::string mixer_replace)
-{
-    //std::cout << "[FIND_REPLACE_EFFECT]" << '\n';
-    auto it = std::find(vec.begin(), vec.end(), G_MAP_EFFECTS.at(mixer_eff));
-    if (it != vec.end()) {
-        // Do the replacement if effect to replace is present
-        *it = G_MAP_EFFECTS.at(mixer_replace);
-    }
-
-    // TODO: Make mixer affected effects into a map of string string
-    // where the first string is the affected effect
-    // and the second string is the replacement effect
-    it = std::find(it + 1, vec.end(), G_MAP_EFFECTS.at(mixer_replace));
-
-    return it;
-}
-
 Product mix(const Product &product, const mixer_enum_t &mixer_enum)
 {
     //std::cout << "[MIX]" << '\n';
@@ -214,14 +17,23 @@ Product mix(const Product &product, const mixer_enum_t &mixer_enum)
     // Last element = effect added by the mixer
     for (auto it = effects.begin(); it != effects.end(); it++)
     {
-        std::string buh = it->name;
-        buh[0] = tolower(buh[0]);
-
         // If the effect will be affected by the mixer...
-        if (std::find(mixer.affected_effects.begin(), mixer.affected_effects.end(), buh) != mixer.affected_effects.end())
+        if (auto it_replace = mixer.affected_effects.find(it->name); it_replace != mixer.affected_effects.end())
         {
-            // Replace the effect
-            replace_effect(effects, mixer_enum, *it);
+            // If there is a duplicate to the left...
+            if (auto it_left = std::find(effects.begin(), it, G_MAP_EFFECTS.at(it_replace->second)); it_left != it)
+            {
+                // Do not replace
+            }
+            // But if there is a duplicate to the right...
+            else if (auto it_right = std::find(it + 1, effects.end(), G_MAP_EFFECTS.at(it_replace->second)); it_right != effects.end())
+            {
+                *it = G_MAP_EFFECTS.at(it_replace->second);
+            }
+            else
+            {
+                *it = G_MAP_EFFECTS.at(it_replace->second);
+            }
         }
     }
 
@@ -278,6 +90,7 @@ Product find_most_profitable_mix(const Product::base_product_t& base, int n_mixe
         }
         std::cout << text.str() << '\n';
 
+        // Update counter
         ctr++;
         if (ctr >= ctr_limit) {
             break;
