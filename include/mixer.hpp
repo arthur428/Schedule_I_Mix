@@ -1,9 +1,9 @@
 #ifndef __MIXER_HPP__
 #define __MIXER_HPP__
 
-#include <algorithm>
 #include <map>
 #include <string>
+#include <vector>
 
 #include "effect.hpp"
 
@@ -32,209 +32,208 @@ struct Mixer
    std::string name;
    double cost;
    Effect effect;
-   std::map<std::string, std::string> affected_effects;
+   std::map<effect_enum_t, effect_enum_t> affected_effects;
 };
 
 // https://www.sportskeeda.com/esports/all-ingredients-schedule-1-their-effects
 // https://www.ign.com/wikis/schedule-1/Schedule_1_Mixing_Guide
 // https://hardcoregamer.com/schedule-1-every-ingredient-effects/
-const std::map<int, Mixer> G_MAP_MIXERS
+const std::vector<Mixer> G_VECTOR_MIXERS
 {
-   {0, Mixer{"Cuke", 2.00, G_MAP_EFFECTS.at("energizing"),
+   {"Cuke", 2.00, G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::energizing)],
       {
-         {"euphoric", "laxative"},
-         {"foggy", "cyclopean"},
-         {"gingeritis", "thoughtprovoking"},
-         {"munchies", "athletic"},
-         {"slippery", "munchies"},
-         {"sneaky", "paranoia"},
-         {"toxic", "euphoric"},
-      }}
+         {effect_enum_t::euphoric, effect_enum_t::laxative},
+         {effect_enum_t::foggy, effect_enum_t::cyclopean},
+         {effect_enum_t::gingeritis, effect_enum_t::thoughtprovoking},
+         {effect_enum_t::munchies, effect_enum_t::athletic},
+         {effect_enum_t::slippery, effect_enum_t::munchies},
+         {effect_enum_t::sneaky, effect_enum_t::paranoia},
+         {effect_enum_t::toxic, effect_enum_t::euphoric}
+      }
    },
 
-   {1, Mixer{"Banana", 2.00, G_MAP_EFFECTS.at("gingeritis"),
+   {"Banana", 2.00, G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::gingeritis)],
       {
-         {"calming", "sneaky"},
-         {"cyclopean", "energizing"},
-         {"disorienting", "focused"},
-         {"energizing", "thoughtprovoking"},
-         {"focused", "seizureinducing"},
-         {"longfaced", "refreshing"},
-         {"paranoia", "jennerising"},
-         {"smelly", "antigravity"},
-         {"toxic", "smelly"},
-      }}
+         {effect_enum_t::calming, effect_enum_t::sneaky},
+         {effect_enum_t::cyclopean, effect_enum_t::energizing},
+         {effect_enum_t::disorienting, effect_enum_t::focused},
+         {effect_enum_t::energizing, effect_enum_t::thoughtprovoking},
+         {effect_enum_t::focused, effect_enum_t::seizureinducing},
+         {effect_enum_t::longfaced, effect_enum_t::refreshing},
+         {effect_enum_t::paranoia, effect_enum_t::jennerising},
+         {effect_enum_t::smelly, effect_enum_t::antigravity},
+         {effect_enum_t::toxic, effect_enum_t::smelly}
+      }
    },
 
-   {2, Mixer{"Paracetamol", 3.00, G_MAP_EFFECTS.at("sneaky"),
+   {"Paracetamol", 3.00, G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::sneaky)],
       {
-         {"munchies", "antigravity"},
-         {"electrifying", "athletic"},
-         {"paranoia", "balding"},
-         {"spicy", "brighteyed"},
-         {"foggy", "calming"},
-         {"focused", "gingeritis"},
-         {"calming", "slippery"},
-         {"glowing", "toxic"},
-         {"toxic", "tropicthunder"},
-         {"energizing", "paranoia"},
-      }}
+         {effect_enum_t::munchies, effect_enum_t::antigravity},
+         {effect_enum_t::electrifying, effect_enum_t::athletic},
+         {effect_enum_t::paranoia, effect_enum_t::balding},
+         {effect_enum_t::spicy, effect_enum_t::brighteyed},
+         {effect_enum_t::foggy, effect_enum_t::calming},
+         {effect_enum_t::focused, effect_enum_t::gingeritis},
+         {effect_enum_t::calming, effect_enum_t::slippery},
+         {effect_enum_t::glowing, effect_enum_t::toxic},
+         {effect_enum_t::toxic, effect_enum_t::tropicthunder},
+         {effect_enum_t::energizing, effect_enum_t::paranoia}
+      }
    },
 
-   {3, Mixer{"Donut", 3.00, G_MAP_EFFECTS.at("caloriedense"),
+   {"Donut", 3.00, G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::caloriedense)],
       {
-         {"antigravity", "slippery"},
-         {"balding", "sneaky"},
-         {"caloriedense", "explosive"},
-         {"focused", "euphoric"},
-         {"jennerising", "gingeritis"},
-         {"munchies", "calming"},
-         {"shrinking", "energizing"},
-      }}
+         {effect_enum_t::antigravity, effect_enum_t::slippery},
+         {effect_enum_t::balding, effect_enum_t::sneaky},
+         {effect_enum_t::caloriedense, effect_enum_t::explosive},
+         {effect_enum_t::focused, effect_enum_t::euphoric},
+         {effect_enum_t::jennerising, effect_enum_t::gingeritis},
+         {effect_enum_t::munchies, effect_enum_t::calming},
+         {effect_enum_t::shrinking, effect_enum_t::energizing}
+      }
    },
 
-   {4, Mixer{"Viagra", 4.00, G_MAP_EFFECTS.at("tropicthunder"),
+   {"Viagra", 4.00, G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::tropicthunder)],
       {
-         {"athletic", "sneaky"},
-         {"disorienting", "toxic"},
-         {"euphoric", "brighteyed"},
-         {"laxative", "calming"},
-         {"shrinking", "gingeritis"},
-      }}
+         {effect_enum_t::athletic, effect_enum_t::sneaky},
+         {effect_enum_t::disorienting, effect_enum_t::toxic},
+         {effect_enum_t::euphoric, effect_enum_t::brighteyed},
+         {effect_enum_t::laxative, effect_enum_t::calming},
+         {effect_enum_t::shrinking, effect_enum_t::gingeritis}
+      }
    },
 
-   {5, Mixer{"Mouth Wash", 4.00, G_MAP_EFFECTS.at("balding"),
+  {"Mouth Wash", 4.00, G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::balding)],
       {
-         {"calming", "antigravity"},
-         {"caloriedense", "sneaky"},
-         {"explosive", "sedating"},
-         {"focused", "jennerising"},
-      }}
+         {effect_enum_t::calming, effect_enum_t::antigravity},
+         {effect_enum_t::caloriedense, effect_enum_t::sneaky},
+         {effect_enum_t::explosive, effect_enum_t::sedating},
+         {effect_enum_t::focused, effect_enum_t::jennerising}
+      }
    },
 
-   {6, Mixer{"Flu Medicine", 5.00, G_MAP_EFFECTS.at("sedating"),
+  {"Flu Medicine", 5.00, G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::sedating)],
       {
-         {"athletic", "munchies"},
-         {"calming", "brighteyed"},
-         {"cyclopean", "foggy"},
-         {"electrifying", "refreshing"},
-         {"euphoric", "toxic"},
-         {"focused", "calming"},
-         {"laxative", "euphoric"},
-         {"munchies", "slippery"},
-         {"shrinking", "paranoia"},
-         {"thoughtprovoking", "gingeritis"},
-      }}
+         {effect_enum_t::athletic, effect_enum_t::munchies},
+         {effect_enum_t::calming, effect_enum_t::brighteyed},
+         {effect_enum_t::cyclopean, effect_enum_t::foggy},
+         {effect_enum_t::electrifying, effect_enum_t::refreshing},
+         {effect_enum_t::euphoric, effect_enum_t::toxic},
+         {effect_enum_t::focused, effect_enum_t::calming},
+         {effect_enum_t::laxative, effect_enum_t::euphoric},
+         {effect_enum_t::munchies, effect_enum_t::slippery},
+         {effect_enum_t::shrinking, effect_enum_t::paranoia},
+         {effect_enum_t::thoughtprovoking, effect_enum_t::gingeritis}
+      }
    },
 
-   {7, Mixer{"Gasoline", 5.00, G_MAP_EFFECTS.at("toxic"),
+   {"Gasoline", 5.00, G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::toxic)],
       {
-         {"disorienting", "glowing"},
-         {"electrifying", "disorienting"},
-         {"energizing", "euphoric"},
-         {"euphoric", "spicy"},
-         {"gingeritis", "smelly"},
-         {"jennerising", "sneaky"},
-         {"laxative", "foggy"},
-         {"munchies", "sedating"},
-         {"paranoia", "calming"},
-         {"shrinking", "focused"},
-         {"sneaky", "tropicthunder"},
-      }}
+         {effect_enum_t::disorienting, effect_enum_t::glowing},
+         {effect_enum_t::electrifying, effect_enum_t::disorienting},
+         {effect_enum_t::energizing, effect_enum_t::euphoric},
+         {effect_enum_t::euphoric, effect_enum_t::spicy},
+         {effect_enum_t::gingeritis, effect_enum_t::smelly},
+         {effect_enum_t::jennerising, effect_enum_t::sneaky},
+         {effect_enum_t::laxative, effect_enum_t::foggy},
+         {effect_enum_t::munchies, effect_enum_t::sedating},
+         {effect_enum_t::paranoia, effect_enum_t::calming},
+         {effect_enum_t::shrinking, effect_enum_t::focused},
+         {effect_enum_t::sneaky, effect_enum_t::tropicthunder}
+      }
    },
 
-   {8, Mixer{"Energy Drink", 6.00, G_MAP_EFFECTS.at("athletic"),
+   {"Energy Drink", 6.00, G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::athletic)],
       {
-         {"disorienting", "electrifying"},
-         {"euphoric", "energizing"},
-         {"focused", "shrinking"},
-         {"foggy", "laxative"},
-         {"glowing", "disorienting"},
-         {"schizophrenia", "balding"},
-         {"sedating", "munchies"},
-         {"spicy", "euphoric"},
-         {"tropicthunder", "sneaky"},
-      }}
+         {effect_enum_t::disorienting, effect_enum_t::electrifying},
+         {effect_enum_t::euphoric, effect_enum_t::energizing},
+         {effect_enum_t::focused, effect_enum_t::shrinking},
+         {effect_enum_t::foggy, effect_enum_t::laxative},
+         {effect_enum_t::glowing, effect_enum_t::disorienting},
+         {effect_enum_t::schizophrenia, effect_enum_t::balding},
+         {effect_enum_t::sedating, effect_enum_t::munchies},
+         {effect_enum_t::spicy, effect_enum_t::euphoric},
+         {effect_enum_t::tropicthunder, effect_enum_t::sneaky}
+      }
    },
 
-   {9, Mixer{"Motor Oil", 6.00, G_MAP_EFFECTS.at("slippery"),
+   {"Motor Oil", 6.00, G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::slippery)],
       {
-         {"energizing", "munchies"},
-         {"euphoric", "sedating"},
-         {"foggy", "toxic"},
-         {"munchies", "schizophrenia"},
-         {"paranoia", "antigravity"},
-      }}
+         {effect_enum_t::energizing, effect_enum_t::munchies},
+         {effect_enum_t::euphoric, effect_enum_t::sedating},
+         {effect_enum_t::foggy, effect_enum_t::toxic},
+         {effect_enum_t::munchies, effect_enum_t::schizophrenia},
+         {effect_enum_t::paranoia, effect_enum_t::antigravity}
+      }
    },
 
-   {10, Mixer{"Mega Bean", 7.00, G_MAP_EFFECTS.at("foggy"),
+   {"Mega Bean", 7.00, G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::foggy)],
       {
-         {"athletic", "laxative"},
-         {"calming", "glowing"},
-         {"energizing", "cyclopean"},
-         {"focused", "disorienting"},
-         {"jennerising", "paranoia"},
-         {"seizureinducing", "focused"},
-         {"shrinking", "electrifying"},
-         {"slippery", "toxic"},
-         {"sneaky", "calming"},
-         {"thoughtprovoking", "energizing"},
-      }}
+         {effect_enum_t::athletic, effect_enum_t::laxative},
+         {effect_enum_t::calming, effect_enum_t::glowing},
+         {effect_enum_t::energizing, effect_enum_t::cyclopean},
+         {effect_enum_t::focused, effect_enum_t::disorienting},
+         {effect_enum_t::jennerising, effect_enum_t::paranoia},
+         {effect_enum_t::seizureinducing, effect_enum_t::focused},
+         {effect_enum_t::shrinking, effect_enum_t::electrifying},
+         {effect_enum_t::slippery, effect_enum_t::toxic},
+         {effect_enum_t::sneaky, effect_enum_t::calming},
+         {effect_enum_t::thoughtprovoking, effect_enum_t::energizing}
+      }
    },
 
-   {11, Mixer{"Chili", 7.00, G_MAP_EFFECTS.at("spicy"),
+   {"Chili", 7.00, G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::spicy)],
       {
-         {"antigravity", "tropicthunder"},
-         {"athletic", "euphoric"},
-         {"laxative", "longfaced"},
-         {"munchies", "toxic"},
-         {"shrinking", "refreshing"},
-         {"sneaky", "brighteyed"},
-         {"thoughtprovoking", "focused"},
-      }}
+         {effect_enum_t::antigravity, effect_enum_t::tropicthunder},
+         {effect_enum_t::athletic, effect_enum_t::euphoric},
+         {effect_enum_t::laxative, effect_enum_t::longfaced},
+         {effect_enum_t::munchies, effect_enum_t::toxic},
+         {effect_enum_t::shrinking, effect_enum_t::refreshing},
+         {effect_enum_t::sneaky, effect_enum_t::brighteyed},
+         {effect_enum_t::thoughtprovoking, effect_enum_t::focused}
+      }
    },
 
-   {12, Mixer{"Battery", 8.00, G_MAP_EFFECTS.at("brighteyed"),
+   {"Battery", 8.00, G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::brighteyed)],
       {
-         {"cyclopean", "glowing"},
-         {"electrifying", "euphoric"},
-         {"euphoric", "zombifying"},
-         {"laxative", "caloriedense"},
-         {"munchies", "tropicthunder"},
-         {"shrinking", "munchies"},
-      }}
+         {effect_enum_t::cyclopean, effect_enum_t::glowing},
+         {effect_enum_t::electrifying, effect_enum_t::euphoric},
+         {effect_enum_t::euphoric, effect_enum_t::zombifying},
+         {effect_enum_t::laxative, effect_enum_t::caloriedense},
+         {effect_enum_t::munchies, effect_enum_t::tropicthunder},
+         {effect_enum_t::shrinking, effect_enum_t::munchies}
+      }
    },
 
-   {13, Mixer{"Iodine", 8.00, G_MAP_EFFECTS.at("jennerising"),
+   {"Iodine", 8.00, G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::jennerising)],
       {
-         {"calming", "balding"},
-         {"caloriedense", "gingeritis"},
-         {"euphoric", "seizureinducing"},
-         {"foggy", "paranoia"},
-         {"refreshing", "thoughtprovoking"},
-         {"toxic", "sneaky"},
-      }}
+         {effect_enum_t::calming, effect_enum_t::balding},
+         {effect_enum_t::caloriedense, effect_enum_t::gingeritis},
+         {effect_enum_t::euphoric, effect_enum_t::seizureinducing},
+         {effect_enum_t::foggy, effect_enum_t::paranoia},
+         {effect_enum_t::refreshing, effect_enum_t::thoughtprovoking},
+         {effect_enum_t::toxic, effect_enum_t::sneaky}
+      }
    },
 
-   {14, Mixer{"Addy", 9.00, G_MAP_EFFECTS.at("thoughtprovoking"),
+   {"Addy", 9.00, G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::thoughtprovoking)],
       {
-         {"explosive", "euphoric"},
-         {"foggy", "energizing"},
-         {"glowing", "refreshing"},
-         {"longfaced", "electrifying"},
-         {"sedating", "gingeritis"},
-      }}
+         {effect_enum_t::explosive, effect_enum_t::euphoric},
+         {effect_enum_t::foggy, effect_enum_t::energizing},
+         {effect_enum_t::glowing, effect_enum_t::refreshing},
+         {effect_enum_t::longfaced, effect_enum_t::electrifying},
+         {effect_enum_t::sedating, effect_enum_t::gingeritis}
+      }
    },
 
-   {15, Mixer{"Horse Semen", 9.00, G_MAP_EFFECTS.at("longfaced"),
+   {"Horse Semen", 9.00, G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::longfaced)],
       {
-         {"antigravity", "calming"},
-         {"gingeritis", "refreshing"},
-         {"seizureinducing", "energizing"},
-         {"thoughtprovoking", "electrifying"},
-      }}
+         {effect_enum_t::antigravity, effect_enum_t::calming},
+         {effect_enum_t::gingeritis, effect_enum_t::refreshing},
+         {effect_enum_t::seizureinducing, effect_enum_t::energizing},
+         {effect_enum_t::thoughtprovoking, effect_enum_t::electrifying}
+      }
    },
-
 };
 
 #endif // __MIXER_HPP__

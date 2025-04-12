@@ -1,14 +1,18 @@
 #include "product.hpp"
 
-#include <cmath>
 #include <iostream>
 #include <sstream>
-#include <vector>
+
+// Default constructor. Does nothing.
+Product::Product()
+{
+}
 
 // Base product constructor
 Product::Product(const base_product_t & base)
 :   sell_price_unit_{0},
     sell_price_batch_{0},
+    batch_count_{0},
     cost_batch_{0}
 {
     // Initialize variables based on base product
@@ -16,32 +20,37 @@ Product::Product(const base_product_t & base)
     switch(base)
     {
         case(base_product_t::OG_KUSH):
-            effects_.push_back(G_MAP_EFFECTS.at("calming"));    
+            effects_.push_back(G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::calming)]);    
             cost_seed_ = COST_SEED_OG_KUSH;
             base_price_ = BASE_PRICE_WEED;
+            batch_count_ = BATCH_COUNT_WEED;
             break;
         
         case(base_product_t::SOUR_DIESEL):
-            effects_.push_back(G_MAP_EFFECTS.at("refreshing"));
+            effects_.push_back(G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::refreshing)]);
             cost_seed_ = COST_SEED_SOUR_DIESEL;
             base_price_ = BASE_PRICE_WEED;
+            batch_count_ = BATCH_COUNT_WEED;
             break;
 
         case(base_product_t::GREEN_CRACK):
-            effects_.push_back(G_MAP_EFFECTS.at("energizing"));
+            effects_.push_back(G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::energizing)]);
             cost_seed_ = COST_SEED_GREEN_CRACK;
             base_price_ = BASE_PRICE_WEED;
+            batch_count_ = BATCH_COUNT_WEED;
             break;
 
         case(base_product_t::G_PURPLE):
-            effects_.push_back(G_MAP_EFFECTS.at("sedating"));
+            effects_.push_back(G_VECTOR_EFFECTS[static_cast<int>(effect_enum_t::sedating)]);
             cost_seed_ = COST_SEED_G_PURPLE;
             base_price_ = BASE_PRICE_WEED;
+            batch_count_ = BATCH_COUNT_WEED;
             break;
 
-        case(base_product_t::CUSTOM):
-            cost_seed_ = 0;
-            base_price_ = 0;
+        case(base_product_t::METH):
+            cost_seed_ = COST_METH_LOW_QUALITY;
+            base_price_ = BASE_PRICE_METH;
+            batch_count_ = BATCH_COUNT_METH;
             break;
 
         default:
@@ -68,7 +77,7 @@ double Product::cost_batch()
     // Add seed cost and cost of all mixers.
     // Assuming all produce are going to be used in the mix.
     for (const Mixer & m : mixers_) {
-        cost += (m.cost * 8);
+        cost += (m.cost * batch_count_);
     }
     cost_batch_ = cost;
 
@@ -88,7 +97,7 @@ double Product::sell_price_unit()
 
     // Calculate selling price
     sell_price = base_price_ * (1 + sum_mult);
-    sell_price_unit_ = floor(sell_price);
+    sell_price_unit_ = std::floor(sell_price);
 
     return sell_price_unit_;
 }
@@ -99,7 +108,7 @@ double Product::sell_price_batch()
     if (sell_price_unit_ <= 0) {
         sell_price_unit();
     }
-    sell_price_batch_ = sell_price_unit_ * 8;
+    sell_price_batch_ = sell_price_unit_ * batch_count_;
 
     return sell_price_batch_;
 }
