@@ -36,7 +36,6 @@ public:
     explicit Product();
     explicit Product(const base_product_t & base);
     explicit Product(const base_product_t & base, const std::vector<Effect> & effects, const std::vector<Mixer> & mixers);
-    int batch_count();
     double cost_batch();
     double sell_price_unit();
     double sell_price_batch();

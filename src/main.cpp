@@ -34,53 +34,83 @@ int main()
     // cout << "Batch Profit: " << result.profit_batch() << '\n';
 
     /***  EXAMPLE 2 ***/
-    Product result;
-    mixer_enum_t max_mixer = mixer_enum_t::horsesemen;
+    // Product result;
+    // mixer_enum_t max_mixer = mixer_enum_t::horsesemen;
 
-    result = find_most_profitable_mix(Product(Product::base_product_t::OG_KUSH), 3, max_mixer);
-    cout << "Batch Cost: " << result.cost_batch() << '\n';
-    cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
-    cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
-    cout << "Batch Profit: " << result.profit_batch() << '\n';
-    result.effects(true);
-    result.mixers(true);
-    cout << "----------" << '\n';
+    // cout << "--- OG KUSH ---" << '\n';
+    // result = Product(Product::base_product_t::OG_KUSH);
+    // result = mix(result, mixer_enum_t::gasoline);
+    // result = mix(result, mixer_enum_t::cuke);
+    // result = mix(result, mixer_enum_t::megabean);
+    // result = mix(result, mixer_enum_t::viagra);
+    // result = find_most_profitable_mix(result, 4, max_mixer);
+    // cout << "Batch Cost: " << result.cost_batch() << '\n';
+    // cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
+    // cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
+    // cout << "Batch Profit: " << result.profit_batch() << '\n';
+    // result.effects(true);
+    // result.mixers(true);
+    // cout << "----------" << '\n';
 
-    result = find_most_profitable_mix(Product(Product::base_product_t::SOUR_DIESEL), 3, max_mixer);
-    cout << "Batch Cost: " << result.cost_batch() << '\n';
-    cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
-    cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
-    cout << "Batch Profit: " << result.profit_batch() << '\n';
-    result.effects(true);
-    result.mixers(true);
-    cout << "----------" << '\n';
+    // cout << "--- Sour Diesel ---" << '\n';
+    // result = Product(Product::base_product_t::SOUR_DIESEL);
+    // result = mix(result, mixer_enum_t::cuke);
+    // result = mix(result, mixer_enum_t::megabean);
+    // result = mix(result, mixer_enum_t::iodine);
+    // result = mix(result, mixer_enum_t::motoroil);
+    // result = find_most_profitable_mix(result, 4, max_mixer);
+    // cout << "Batch Cost: " << result.cost_batch() << '\n';
+    // cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
+    // cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
+    // cout << "Batch Profit: " << result.profit_batch() << '\n';
+    // result.effects(true);
+    // result.mixers(true);
+    // cout << "----------" << '\n';
 
-    result = find_most_profitable_mix(Product(Product::base_product_t::GREEN_CRACK), 3, max_mixer);
-    cout << "Batch Cost: " << result.cost_batch() << '\n';
-    cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
-    cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
-    cout << "Batch Profit: " << result.profit_batch() << '\n';
-    result.effects(true);
-    result.mixers(true);
-    cout << "----------" << '\n';
+    // cout << "--- Green Crack ---" << '\n';
+    // result = Product(Product::base_product_t::GREEN_CRACK);
+    // result = mix(result, mixer_enum_t::gasoline);
+    // result = mix(result, mixer_enum_t::cuke);
+    // result = mix(result, mixer_enum_t::viagra);
+    // result = mix(result, mixer_enum_t::megabean);
+    // result = find_most_profitable_mix(result, 4, max_mixer);
+    // cout << "Batch Cost: " << result.cost_batch() << '\n';
+    // cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
+    // cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
+    // cout << "Batch Profit: " << result.profit_batch() << '\n';
+    // result.effects(true);
+    // result.mixers(true);
+    // cout << "----------" << '\n';
 
-    result = find_most_profitable_mix(Product(Product::base_product_t::G_PURPLE), 3, max_mixer);
-    cout << "Batch Cost: " << result.cost_batch() << '\n';
-    cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
-    cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
-    cout << "Batch Profit: " << result.profit_batch() << '\n';
-    result.effects(true);
-    result.mixers(true);
-    cout << "----------" << '\n';
+    // cout << "--- G Purple ---" << '\n';
+    // result = Product(Product::base_product_t::G_PURPLE);
+    // result = mix(result, mixer_enum_t::banana);
+    // result = mix(result, mixer_enum_t::cuke);
+    // result = mix(result, mixer_enum_t::horsesemen);
+    // result = mix(result, mixer_enum_t::megabean);
+    // result = find_most_profitable_mix(result, 4, max_mixer);
+    // cout << "Batch Cost: " << result.cost_batch() << '\n';
+    // cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
+    // cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
+    // cout << "Batch Profit: " << result.profit_batch() << '\n';
+    // result.effects(true);
+    // result.mixers(true);
+    // cout << "----------" << '\n';
 
-    result = find_most_profitable_mix(Product(Product::base_product_t::METH), 3, max_mixer);
-    cout << "Batch Cost: " << result.cost_batch() << '\n';
-    cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
-    cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
-    cout << "Batch Profit: " << result.profit_batch() << '\n';
-    result.effects(true);
-    result.mixers(true);
-    cout << "----------" << '\n';
+    // cout << "--- Meth ---" << '\n';
+    // result = Product(Product::base_product_t::METH);
+    // result = mix(result, mixer_enum_t::banana);
+    // result = mix(result, mixer_enum_t::cuke);
+    // result = mix(result, mixer_enum_t::horsesemen);
+    // result = mix(result, mixer_enum_t::megabean);
+    // result = find_most_profitable_mix(result, 4, max_mixer);
+    // cout << "Batch Cost: " << result.cost_batch() << '\n';
+    // cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
+    // cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
+    // cout << "Batch Profit: " << result.profit_batch() << '\n';
+    // result.effects(true);
+    // result.mixers(true);
+    // cout << "----------" << '\n';
 
 
     /***  EXAMPLE 3 ***/
@@ -167,6 +197,62 @@ int main()
     // result.effects(true);
     // result.mixers(true);
     // cout << "----------" << '\n';
+
+    /***  EXAMPLE 6 ***/
+    Product base_product;
+    Product result;
+    mixer_enum_t max_mixer = mixer_enum_t::horsesemen;
+    std::vector<Effect> desired_effects = {
+        G_VECTOR_EFFECTS.at(static_cast<int>(effect_enum_t::balding)),
+        G_VECTOR_EFFECTS.at(static_cast<int>(effect_enum_t::longfaced)),
+        G_VECTOR_EFFECTS.at(static_cast<int>(effect_enum_t::sedating)),
+    };
+
+    for (auto base = static_cast<int>(Product::base_product_t::OG_KUSH); 
+            base <= static_cast<int>(Product::base_product_t::METH);
+            base++)
+    {
+        base_product = Product(static_cast<Product::base_product_t>(base));
+
+        switch(base)
+        {
+            case(0):
+                cout << "----- OG KUSH -----: " << '\n';
+                break;
+
+            case(1):
+                cout << "----- SOUR DIESEL -----: " << '\n';
+                break;
+            
+            case(2):
+                cout << "----- GREEN CRACK -----: " << '\n';
+                break;
+            
+            case(3):
+                cout << "----- G PURPLE -----: " << '\n';
+                break;
+
+            case(4):
+                cout << "----- METH -----: " << '\n';
+                break;
+
+            default:
+                cout << "----- UNSUPPORTED -----: " << '\n';
+                break;
+        }
+
+        // To increase probability of success, let n_mixer be >= (number of desired effects).
+        result = find_most_profitable_mix(base_product, desired_effects.size() + 1, max_mixer, desired_effects);
+        cout << "Batch Cost: " << result.cost_batch() << '\n';
+        cout << "Unit Sell Price: " << result.sell_price_unit() << '\n';
+        cout << "Batch Sell Price: " << result.sell_price_batch() << '\n';
+        cout << "Batch Profit: " << result.profit_batch() << '\n';
+        result.effects(true);
+        result.mixers(true);
+        cout << "----------" << '\n';
+
+    }
+    
 
     return 0;
 }

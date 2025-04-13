@@ -3,6 +3,28 @@
 #include <iostream>
 #include <sstream>
 
+static bool desired_effects_present(const std::vector<Effect> &effs, const std::vector<Effect> &desired_effs)
+{
+    bool b_all_present = false;
+    std::vector<uint8_t> eff_ids;
+    std::vector<int> desired_eff_ids;
+
+    // Get and sort effect IDs
+    eff_ids.reserve(effs.size());
+    for (auto it = effs.begin(); it != effs.end(); it++) { eff_ids.push_back(static_cast<uint8_t>(it->id)); }
+    std::sort(eff_ids.begin(), eff_ids.end());
+
+    // Get and sort desired effect IDs
+    desired_eff_ids.reserve(desired_eff_ids.size());
+    for (auto it = desired_effs.begin(); it != desired_effs.end(); it++) { desired_eff_ids.push_back(static_cast<uint8_t>(it->id)); }
+    std::sort(desired_eff_ids.begin(), desired_eff_ids.end());
+
+    // Check if desired effect vector is a subset of effect vector
+    b_all_present = std::includes(eff_ids.begin(), eff_ids.end(), desired_eff_ids.begin(), desired_eff_ids.end());
+
+    return b_all_present;
+}
+
 // Replace effect in effects vector with another effect based on the mixer used
 Product mix(const Product &product, const mixer_enum_t &mixer_enum)
 {
@@ -61,13 +83,20 @@ Product mix(const Product &product, const mixer_enum_t &mixer_enum)
 }
 
 // Simulate mix until n_mixes and find the most profitable mix.
-Product find_most_profitable_mix(const Product &base_product, const int &n_mixers, const mixer_enum_t &last_unlocked_mixer)
+Product find_most_profitable_mix(const Product &base_product, const int &n_mixers, const mixer_enum_t &last_unlocked_mixer, const std::vector<Effect> &desired_effs)
 {
+    if (static_cast<unsigned int>(n_mixers) < desired_effs.size() - 1)
+    {
+        std::cerr << "n_mixers must be >= size of desired effects vector - 1." << '\n';
+        return base_product;
+    }
+
     // For checking most profitable mix
     Product product;
     Product old;
     Product temp;
     Product most_profitable_product;
+    bool found_product_with_desired_effects = false;
     double profit_batch = 0;
     auto mixer_selection = std::vector<uint8_t>(static_cast<int>(0, n_mixers));
 
@@ -91,8 +120,13 @@ Product find_most_profitable_mix(const Product &base_product, const int &n_mixer
 
         // Update most profitable record
         if (product.profit_batch() > profit_batch) {
-            profit_batch = product.profit_batch();
-            most_profitable_product = product;
+            // Only if the desired effects are present
+            if (desired_effects_present(product.effects(), desired_effs))
+            {
+                profit_batch = product.profit_batch();
+                most_profitable_product = product;
+                found_product_with_desired_effects = true;
+            }
         }
 
         // Debug Log
@@ -123,6 +157,13 @@ Product find_most_profitable_mix(const Product &base_product, const int &n_mixer
             }
             it_lsb = mixer_selection.begin();
         }
+    }
+
+    // If no product with desired effects found, not even one...
+    if (!found_product_with_desired_effects)
+    {
+        std::cerr << "Impossible to get desired effects with current settings!" << '\n';
+        most_profitable_product = base_product;
     }
 
     return most_profitable_product;
